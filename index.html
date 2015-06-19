@@ -1,1 +1,198 @@
-Hello Github
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+Template Name: Photomatic
+Author: <a href="http://www.os-templates.com/">OS Templates</a>
+Author URI: http://www.os-templates.com/
+Licence: Free to use under our free template licence terms
+Licence URI: http://www.os-templates.com/template-terms
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Photomatic</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="layout/styles/layout.css" type="text/css" />
+<script type="text/javascript" src="layout/scripts/jquery.min.js"></script>
+<!-- FancyBox -->
+<link rel="stylesheet" href="layout/scripts/fancybox-2.1.5/jquery.fancybox.css" type="text/css" />
+<script type="text/javascript" src="layout/scripts/fancybox-2.1.5/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("a.fb_image").fancybox({
+        openEffect: 'elastic',
+        closeEffect: 'elastic',
+        openSpeed: 600,
+        closeSpeed: 600,
+        helpers: {
+            overlay: {
+                closeClick: true,
+            },
+            title: {
+                type: 'over'
+            }
+        }
+    });
+});
+</script>
+<!-- End FancyBox -->
+</head>
+<body id="top">
+<div class="wrapper col1">
+  <div id="header">
+    <div class="fl_left">
+      <h1><a href="index.html">Puppypull</a></h1>
+      <p>Like a puppy</p>
+    </div>
+	  <!--################################################## search bar added ################################## -->
+	  <div id="topbar">
+		  <div id="search">
+      		<form action="#" method="post">
+        		<fieldset>
+          			<legend>Site Search</legend>
+          			<input type="text" value="Search the site&hellip;"  onfocus="this.value=(this.value=='Search the site&hellip;')? '' : this.value ;" />
+          			<input type="submit" name="go" id="go" value="GO" />
+        		</fieldset>
+      		</form>
+    	</div>
+	  </div>
+	  
+    <!-- <div id="topnav">
+      <ul>
+        <li class="active"><a href="index.html">Home</a></li>
+        <li><a href="pages/style-demo.html">Style Demo</a></li>
+        <li><a href="pages/full-width.html">Full Width</a></li>
+        <li><a href="#">Link Text</a></li>
+        <li class="last"><a href="#">A Long Link Text</a></li>
+      </ul>
+    </div> -->
+    <br class="clear" />
+  </div>
+</div>
+<!-- ####################################################################################################### Top like photos ########################################################-->
+<!--<div class="wrapper col2">
+  <div class="container">
+    <div class="homecontent">
+      <ul>
+        <li> 
+          <h2 class="title"><img src="https://farm9.staticflickr.com/8851/18082543416_9992184210.jpg" alt="" /></h2>
+          <p>This is a W3C standards compliant free website template from <a href="http://www.os-templates.com/">OS Templates</a>. For more CSS templates visit <a href="http://www.os-templates.com/">Free Website Templates</a>. Nullam lacus dui ipsum conseque loborttis non euisque morbi penas dapibulum orna. Urnaultrices quis curabitur phasellentesque congue magnis.</p>
+          <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
+        </li>
+        <li>
+          <h2 class="title"><img src="https://farm9.staticflickr.com/8851/18082543416_9992184210.jpg" alt="" /></h2>
+           <p>This template is distributed using a <a href="http://www.os-templates.com/template-terms">Website Template Licence</a>, which allows you to use and modify the template for both personal and commercial use when you keep the provided credit links in the footer.</p>
+          <p class="readmore"><a href="#">Continue Reading &raquo;</a></p> 
+        </li>
+        <li class="last">
+          <h2 class="title"><img src="https://farm9.staticflickr.com/8851/18082543416_9992184210.jpg" alt="" /></h2>
+          <p>Nullamlacus dui ipsum conseque loborttis non euisque morbi penas dapibulum orna. Urnaultrices quis curabitur phasellentesque congue magnis vestibulum quismodo nulla et feugiat. Adipisciniapellentum leo ut consequam ris felit elit id nibh sociis malesuada.</p>
+          <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
+        </li>
+      </ul>
+      <br class="clear" />
+    </div>
+  </div>
+</div> -->
+<!-- ####################################################################################################### -->
+<div class="wrapper col3">
+  <div class="container">
+   <!-- <div class="pagination"> ######################## pagination is done at the bottom ##############################
+      <ul>
+        <li class="first"><a href="#">First</a></li>
+        <li class="prev"><a href="#">Prev</a> </li>
+        <li class="pnum"><a href="#">1</a></li>
+        <li class="pnum"><a href="#">2</a></li>
+        <li class="pnum"><a href="#">3</a></li>
+        <li class="pnum"><a href="#">4</a></li>
+        <li class="current">5</li>
+        <li class="pnum"><a href="#">6</a></li>
+        <li class="pnum"><a href="#">7</a></li>
+        <li class="pnum"><a href="#">8</a></li>
+        <li class="pnum"><a href="#">9</a></li>
+        <li class="next"><a href="#">Next</a></li>
+        <li class="last"><a href="#">Last</a></li>
+      </ul>
+    </div> -->
+    <div class="gallery">
+      <ul>
+		  
+		  <li ng-repeat = x in data>
+			  <a class="fb_image" href="https://farm9.staticflickr.com/8851/18082543416_9992184210.jpg" title="Image 1 Link Title Tag"><img src="https://farm9.staticflickr.com/8851/18082543416_9992184210.jpg" alt="" /></a>
+		  </li>
+       <!-- <li>
+          <p class="imgtitle">Indonectetus facilis leo nibh</p>
+          <a class="fb_image" href="images/demo/gallery/500x500.gif" title="Image 1 Link Title Tag"><img src="images/demo/gallery/284x224.gif" alt="" /></a>
+          <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
+        </li>
+        <li>
+          <p class="imgtitle">Indonectetus facilis leo nibh</p>
+          <a class="fb_image" href="images/demo/gallery/500x500.gif" title="Image 2 Link Title Tag"><img src="images/demo/gallery/284x224.gif" alt="" /></a>
+          <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
+        </li>
+        <li class="last">
+          <p class="imgtitle">Indonectetus facilis leo nibh</p>
+          <a class="fb_image" href="images/demo/gallery/500x500.gif" title="Image 3 Link Title Tag"><img src="images/demo/gallery/284x224.gif" alt="" /></a>
+          <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
+        </li>
+        <li>
+          <p class="imgtitle">Indonectetus facilis leo nibh</p>
+          <a class="fb_image" href="images/demo/gallery/500x500.gif" title="Image 4 Link Title Tag"><img src="images/demo/gallery/284x224.gif" alt="" /></a>
+          <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
+        </li>
+        <li>
+          <p class="imgtitle">Indonectetus facilis leo nibh</p>
+          <a class="fb_image" href="images/demo/gallery/500x500.gif" title="Image 5 Link Title Tag"><img src="images/demo/gallery/284x224.gif" alt="" /></a>
+          <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
+        </li>
+        <li class="last">
+          <p class="imgtitle">Indonectetus facilis leo nibh</p>
+          <a class="fb_image" href="images/demo/gallery/500x500.gif" title="Image 6 Link Title Tag"><img src="images/demo/gallery/284x224.gif" alt="" /></a>
+          <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
+        </li>
+        <li>
+          <p class="imgtitle">Indonectetus facilis leo nibh</p>
+          <a class="fb_image" href="images/demo/gallery/500x500.gif" title="Image 7 Link Title Tag"><img src="images/demo/gallery/284x224.gif" alt="" /></a>
+          <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
+        </li>
+        <li>
+          <p class="imgtitle">Indonectetus facilis leo nibh</p>
+          <a class="fb_image" href="images/demo/gallery/500x500.gif" title="Image 8 Link Title Tag"><img src="images/demo/gallery/284x224.gif" alt="" /></a>
+          <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
+        </li>
+        <li class="last">
+          <p class="imgtitle">Indonectetus facilis leo nibh</p>
+          <a class="fb_image" href="images/demo/gallery/500x500.gif" title="Image 9 Link Title Tag"><img src="images/demo/gallery/284x224.gif" alt="" /></a>
+          <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
+        </li>
+      </ul> -->
+      <br class="clear" />
+    </div>
+	  <!-- ########################################## pagination #######################################-->
+	  <div class="pagination">
+      <ul>
+        <li class="first"><a href="#">First</a></li>
+        <li class="prev"><a href="#">Prev</a> </li>
+        <li class="pnum"><a href="#">1</a></li>
+        <li class="pnum"><a href="#">2</a></li>
+        <li class="pnum"><a href="#">3</a></li>
+        <li class="pnum"><a href="#">4</a></li>
+        <li class="current">5</li>
+        <li class="pnum"><a href="#">6</a></li>
+        <li class="pnum"><a href="#">7</a></li>
+        <li class="pnum"><a href="#">8</a></li>
+        <li class="pnum"><a href="#">9</a></li>
+        <li class="next"><a href="#">Next</a></li>
+        <li class="last"><a href="#">Last</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- ####################################################################################################### Footer ###################################################### -->
+<!-- <div class="wrapper col5">
+  <div id="footer">
+    <p class="fl_left">Copyright &copy; 2014 - All Rights Reserved - <a href="#">Domain Name</a></p>
+    <p class="fl_right">Template by <a target="_blank" href="http://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
+    <br class="clear" />
+  </div>
+</div> -->
+</body>
+</html>

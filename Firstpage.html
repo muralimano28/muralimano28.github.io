@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Photomatic</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="layout/styles/layout.css" type="text/css" />
+<script type="text/javascript" src="layout/scripts/jquery.min.js"></script>
+<!-- ####################################################################################### FancyBox ##############################################################################-->
+<link rel="stylesheet" href="layout/scripts/fancybox-2.1.5/jquery.fancybox.css" type="text/css" />
+<script type="text/javascript" src="layout/scripts/fancybox-2.1.5/jquery.fancybox.pack.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("a.fb_image").fancybox({
+        openEffect: 'elastic',
+        closeEffect: 'elastic',
+        openSpeed: 600,
+        closeSpeed: 600,
+        helpers: {
+            overlay: {
+                closeClick: true,
+            },
+            title: {
+                type: 'over'
+            }
+        }
+    });
+});
+</script>
+<!-- ###################################################################### code for angular module and controller ################################################## -->
+	
+	<script type = "text/javascript">
+		var myapp = angular.module("myApp",[]);
+		myapp.controller("myCtrl",function($scope,$http){
+			
+			$scope.currpage = 0;
+			$http.get(" https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=3d2d585fda4651abf0ef33e60d4e9b10&tags=cute+puppy&per_page=100&page=5&format=json&nojsoncallback=1&auth_token=72157654704314156-c8853538ad614fe3&api_sig=e1699368529cb020e46920ea22c3aee4").success(function(content){
+				$scope.data = content.photos.photo;
+				//$scope.newArray = $scope.data.slice(0,10);
+				$scope.displaying(0);
+			});
+			$scope.displaying = function(x){
+				$scope.currpage = x;
+				var final = x+10;
+				$scope.newArray = $scope.data.slice(x,final);
+			}
+		});
+	</script>
+<!-- ########################################################################################## End FancyBox ###########################################################################-->
+</head>
+<body id="top" ng-app = "myApp" ng-controller = "myCtrl" ng-init = "data=[]">
+<div class="wrapper col1">
+  <div id="header">
+    <div class="fl_left">
+      <h1><a href="index.html">Puppypull</a></h1>
+      <p>Like a puppy</p>
+    </div>
+	  <!--################################################## search bar added ################################## -->
+	  <div id="topbar">
+		  <div id="search">
+      		<form action="#" method="post">
+        		<fieldset>
+          			<legend>Site Search</legend>
+          			<input type="text" value="Search the site&hellip;"  onfocus="this.value=(this.value=='Search the site&hellip;')? '' : this.value ;" />
+          			<input type="submit" name="go" id="go" value="GO" />
+        		</fieldset>
+      		</form>
+    	</div>
+	  </div>
+    <br class="clear" />
+  </div>
+</div>
+<!-- ####################################################################################################### -->
+<div class="wrapper col3">
+  <div class="container">
+    <div class="gallery">
+		<ul>
+  			<li ng-repeat="x in newArray">
+				<a class="fb_image" href="https://farm{{x.farm}}.staticflickr.com/{{x.server}}/{{x.id}}_{{x.secret}}.jpg" title="Image 1 Link Title Tag"><img src="https://farm{{x.farm}}.staticflickr.com/{{x.server}}/{{x.id}}_{{x.secret}}.jpg" alt="" /></a>
+				<div>
+					<div style="float:right" class="arrow-down"></div>
+					<div style="float:right" class="arrow-up"></div>
+				</div>
+  			</li>
+		</ul>
+      <br class="clear" />
+    </div>
+	  <!-- ########################################## pagination #######################################-->
+	   <div class="pagination">
+      <ul>
+        <li class="first"><a href="#" ng-click = "displaying(0)">First</a></li>
+        <li class="prev"><a href="#" ng-click = "displaying(currpage-1)">Prev</a> </li>
+        <li class="pnum"><a href="#" ng-click = "displaying(0)">1</a></li>
+        <li class="pnum"><a href="#" ng-click = "displaying(10)">2</a></li>
+        <li class="pnum"><a href="#" ng-click = "displaying(20)">3</a></li>
+        <li class="pnum"><a href="#" ng-click = "displaying(30)">4</a></li>
+        <li class="pnum"><a href="#" ng-click = "displaying(40)">5</a></li>
+		  <!-- <li class="current" >5</li> -->
+        <li class="pnum"><a href="#" ng-click = "displaying(50)">6</a></li>
+        <li class="pnum"><a href="#" ng-click = "displaying(60)">7</a></li>
+        <li class="pnum"><a href="#" ng-click = "displaying(70)">8</a></li>
+        <li class="pnum"><a href="#" ng-click = "displaying(80)">9</a></li>
+        <li class="next"><a href="#" ng-click = "displaying(currpage+1)">Next</a></li>
+        <li class="last"><a href="#" ng-click = "displaying(90)">Last</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+</body>
+</html>
