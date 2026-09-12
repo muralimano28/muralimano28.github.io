@@ -1,110 +1,81 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>Photomatic</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<link rel="stylesheet" href="layout/styles/layout.css" type="text/css" />
-<script type="text/javascript" src="layout/scripts/jquery.min.js"></script>
-<!-- ####################################################################################### FancyBox ##############################################################################-->
-<link rel="stylesheet" href="layout/scripts/fancybox-2.1.5/jquery.fancybox.css" type="text/css" />
-<script type="text/javascript" src="layout/scripts/fancybox-2.1.5/jquery.fancybox.pack.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-    $("a.fb_image").fancybox({
-        openEffect: 'elastic',
-        closeEffect: 'elastic',
-        openSpeed: 600,
-        closeSpeed: 600,
-        helpers: {
-            overlay: {
-                closeClick: true,
-            },
-            title: {
-                type: 'over'
-            }
-        }
-    });
-});
-</script>
-<!-- ###################################################################### code for angular module and controller ################################################## -->
-	
-	<script type = "text/javascript">
-		var myapp = angular.module("myApp",[]);
-		myapp.controller("myCtrl",function($scope,$http){
-			
-			$scope.currpage = 0;
-			$http.get(" https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=3d2d585fda4651abf0ef33e60d4e9b10&tags=cute+puppy&per_page=100&page=5&format=json&nojsoncallback=1&auth_token=72157654704314156-c8853538ad614fe3&api_sig=e1699368529cb020e46920ea22c3aee4").success(function(content){
-				$scope.data = content.photos.photo;
-				//$scope.newArray = $scope.data.slice(0,10);
-				$scope.displaying(0);
-			});
-			$scope.displaying = function(x){
-				$scope.currpage = x;
-				var final = x+10;
-				$scope.newArray = $scope.data.slice(x,final);
-			}
-		});
-	</script>
-<!-- ########################################################################################## End FancyBox ###########################################################################-->
-</head>
-<body id="top" ng-app = "myApp" ng-controller = "myCtrl" ng-init = "data=[]">
-<div class="wrapper col1">
-  <div id="header">
-    <div class="fl_left">
-      <h1><a href="index.html">Puppypull</a></h1>
-      <p>Like a puppy</p>
-    </div>
-	  <!--################################################## search bar added ################################## -->
-	  <div id="topbar">
-		  <div id="search">
-      		<form action="#" method="post">
-        		<fieldset>
-          			<legend>Site Search</legend>
-          			<input type="text" value="Search the site&hellip;"  onfocus="this.value=(this.value=='Search the site&hellip;')? '' : this.value ;" />
-          			<input type="submit" name="go" id="go" value="GO" />
-        		</fieldset>
-      		</form>
-    	</div>
-	  </div>
-    <br class="clear" />
-  </div>
-</div>
-<!-- ####################################################################################################### -->
-<div class="wrapper col3">
-  <div class="container">
-    <div class="gallery">
-		<ul>
-  			<li ng-repeat="x in newArray">
-				<a class="fb_image" href="https://farm{{x.farm}}.staticflickr.com/{{x.server}}/{{x.id}}_{{x.secret}}.jpg" title="Image 1 Link Title Tag"><img src="https://farm{{x.farm}}.staticflickr.com/{{x.server}}/{{x.id}}_{{x.secret}}.jpg" alt="" /></a>
-				<div>
-					<div style="float:right" class="arrow-down"></div>
-					<div style="float:right" class="arrow-up"></div>
-				</div>
-  			</li>
-		</ul>
-      <br class="clear" />
-    </div>
-	  <!-- ########################################## pagination #######################################-->
-	   <div class="pagination">
-      <ul>
-        <li class="first"><a href="#" ng-click = "displaying(0)">First</a></li>
-        <li class="prev"><a href="#" ng-click = "displaying(currpage-1)">Prev</a> </li>
-        <li class="pnum"><a href="#" ng-click = "displaying(0)">1</a></li>
-        <li class="pnum"><a href="#" ng-click = "displaying(10)">2</a></li>
-        <li class="pnum"><a href="#" ng-click = "displaying(20)">3</a></li>
-        <li class="pnum"><a href="#" ng-click = "displaying(30)">4</a></li>
-        <li class="pnum"><a href="#" ng-click = "displaying(40)">5</a></li>
-		  <!-- <li class="current" >5</li> -->
-        <li class="pnum"><a href="#" ng-click = "displaying(50)">6</a></li>
-        <li class="pnum"><a href="#" ng-click = "displaying(60)">7</a></li>
-        <li class="pnum"><a href="#" ng-click = "displaying(70)">8</a></li>
-        <li class="pnum"><a href="#" ng-click = "displaying(80)">9</a></li>
-        <li class="next"><a href="#" ng-click = "displaying(currpage+1)">Next</a></li>
-        <li class="last"><a href="#" ng-click = "displaying(90)">Last</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
-</body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Portfolio of Murali Manohar P, Senior Software Engineer and AI Engineer specializing in enterprise AI, RAG, and scalable systems.">
+    <title>Murali Manohar P | Senior Software Engineer &amp; AI Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;family=Manrope:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" id="top">
+      <a class="brand" href="#top" aria-label="Murali Manohar P home">M<span>.</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span><span class="sr-only">Open navigation</span></button>
+      <nav id="site-nav" aria-label="Primary navigation">
+        <a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">AI Work</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+      </nav>
+      <a class="header-link" href="https://www.linkedin.com/in/muralimanohar-p/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">LinkedIn <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main id="main">
+      <section class="hero section-shell" id="about">
+        <div class="hero-copy reveal">
+          <p class="eyebrow"><span></span> Senior Software Engineer / AI Engineer</p>
+          <h1>Building the systems behind <em>useful</em> enterprise AI.</h1>
+          <p class="hero-intro">I am Murali Manohar P, an engineer with 11+ years of experience designing large-scale software and AI-enabled products - from Microsoft Copilot experiences to production-ready RAG and AI agent systems.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#contact">Let's connect <span aria-hidden="true">→</span></a>
+            <a class="button button-text" href="#experience">View experience <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+        <div class="hero-portrait reveal delay-1">
+          <div class="portrait-frame"><img src="assets/profile-photo.png" alt="Murali Manohar P in a suit"></div>
+          <p class="portrait-note">Hyderabad, India<br><span>Senior Software Engineer (Ex-Microsoft)</span></p>
+        </div>
+        <div class="hero-stats reveal delay-2" aria-label="Career highlights">
+          <div><strong>11+</strong><span>years building software</span></div>
+          <div><strong>3M+</strong><span>monthly visits supported</span></div>
+          <div><strong>93%</strong><span>bundle-size reduction</span></div>
+        </div>
+      </section>
+
+      <section class="statement section-shell reveal">
+        <p class="section-label">A little context</p>
+        <div><h2>Engineering depth, with an eye on what AI can make possible.</h2><p>My work combines software architecture, platform modernization, and modern Generative AI to create scalable, secure applications people can actually use.</p></div>
+      </section>
+
+      <section class="impact section-shell" aria-labelledby="impact-title">
+        <div class="section-heading reveal"><p class="section-label">Selected impact</p><h2 id="impact-title">The numbers tell part of the story.</h2></div>
+        <div class="impact-grid">
+          <article class="impact-card reveal"><p class="impact-number">157 <small>KB</small> <span>→</span> 10.8 <small>KB</small></p><h3>Lean, fast web experiences</h3><p>Reduced JavaScript bundle size by 93% and improved page load time to under 200 ms at Microsoft.</p></article>
+          <article class="impact-card reveal delay-1"><p class="impact-number">~80<small>%</small></p><h3>Shared architecture, less effort</h3><p>Reduced engineering effort through shared architecture across Microsoft Teams and web experiences.</p></article>
+          <article class="impact-card reveal delay-2"><p class="impact-number">1,000<small>+</small></p><h3>Enterprise customers</h3><p>Helped Ally.io scale from Employee #13 to over 1,000 customers before its Microsoft acquisition.</p></article>
+        </div>
+      </section>
+
+      <section class="experience section-shell" id="experience" aria-labelledby="experience-title">
+        <div class="section-heading reveal"><p class="section-label">Experience</p><h2 id="experience-title">A career in products that operate at scale.</h2></div>
+        <div class="timeline">
+          <article class="role reveal"><div class="role-meta"><span>2021 - 2025</span><span>Microsoft</span></div><div class="role-body"><h3>Software Engineer 2</h3><p class="role-focus">Microsoft Copilot &amp; Viva Goals</p><ul><li>Built an MVP for an AI-powered Employee Self-Service Agent integrated with Microsoft Copilot, including conversational HR workflows.</li><li>Led frontend architecture during the Ally.io-to-Microsoft ecosystem migration, completed within nine months.</li><li>Led Microsoft Teams integration through production deployment and helped reduce engineering effort by about 80%.</li><li>Improved page load time to under 200 ms and mitigated a DDoS vulnerability by reducing HTML payload size from 59 KB to 10 KB.</li></ul></div></article>
+          <article class="role reveal"><div class="role-meta"><span>2019 - 2021</span><span>Ally.io</span></div><div class="role-body"><h3>Senior Software Engineer</h3><p class="role-focus">Platform scale &amp; performance</p><ul><li>Joined as Employee #13 and helped scale the platform to more than 1,000 customers prior to acquisition by Microsoft.</li><li>Led frontend performance initiatives and improved scalability through API optimization and payload reduction.</li><li>Established a UI/UX Center of Excellence and led the migration from Vanilla CSS to Tailwind CSS.</li><li>Built the Quick Actions workflow feature, achieving about 80% adoption.</li></ul></div></article>
+          <article class="role reveal"><div class="role-meta"><span>2017 - 2019</span><span>CaratLane</span></div><div class="role-body"><h3>Software Engineer II → Senior Software Engineer</h3><p class="role-focus">Architecture &amp; customer platforms</p><ul><li>Led a complete React + Redux rewrite of a customer-facing platform serving roughly 3 million monthly visits.</li><li>Established scalable architecture patterns and delivered implementation from architecture through production.</li><li>Built an award-winning omnichannel experience connecting in-store and online customer journeys.</li><li>Designed an internal product discovery platform that reduced production waste by about 60%.</li></ul></div></article>
+          <article class="role compact-role reveal"><div class="role-meta"><span>2015 - 2017</span><span>BookMyShow</span></div><div class="role-body"><h3>Software Engineer</h3><p>Developed React-based features and responsive interfaces for a high-traffic consumer platform, working closely with Product and Design in Agile Scrum teams.</p></div></article>
+          <article class="role compact-role reveal"><div class="role-meta"><span>2014 - 2015</span><span>Aricent</span></div><div class="role-body"><h3>Software Developer</h3><p>Developed Angular-based IoT visualization applications and Google Maps integrations for device monitoring solutions.</p></div></article>
+        </div>
+      </section>
+
+      <section class="project-section" id="projects" aria-labelledby="projects-title"><div class="section-shell"><div class="section-heading reveal"><p class="section-label">Generative AI work</p><h2 id="projects-title">Building AI that can find the right context.</h2></div><article class="project-card reveal"><div class="project-copy"><p class="project-kicker">Independent AI Engineer <span>•</span> 2026 - Present</p><h3>Enterprise Knowledge Assistant <span>(RAG)</span></h3><p>An enterprise knowledge assistant designed to ingest PDFs, Office documents, and internal documentation using semantic chunking, embeddings, vector search, and LLM orchestration.</p><dl><div><dt>Capabilities</dt><dd>Document ingestion · Semantic chunking · Embedding generation · Vector search · Retrieval optimization · Context injection · Prompt orchestration · Hallucination reduction</dd></div><div><dt>Technologies</dt><dd>Python · FastAPI · OpenAI APIs · Google GenAI APIs · Vector databases · RAG pipelines · LLM orchestration</dd></div></dl><a class="underlined-link" href="https://github.com/muralimano28/enterprise-rag" target="_blank" rel="noopener noreferrer" aria-label="Project GitHub link">View on GitHub <span aria-hidden="true">↗</span></a></div><div class="project-visual" aria-hidden="true"><div class="node node-top">Documents</div><div class="node node-left">Chunks</div><div class="node node-right">Vector Search</div><div class="node node-bottom">Grounded answer</div><div class="orb">RAG</div></div></article></div></section>
+
+      <section class="skills section-shell" id="skills" aria-labelledby="skills-title"><div class="section-heading reveal"><p class="section-label">Toolkit</p><h2 id="skills-title">The tools behind the work.</h2></div><div class="skill-grid reveal"><div><h3>Generative AI</h3><p>OpenAI APIs, Google Gemini APIs, prompt engineering, function calling, structured outputs, LLM orchestration</p></div><div><h3>RAG &amp; AI agents</h3><p>Document ingestion, semantic chunking, embeddings, vector search, knowledge retrieval, MCP, LangChain, LangGraph, ChromaDB</p></div><div><h3>Software engineering</h3><p>JavaScript, TypeScript, Python, React, Next.js, Redux, Node.js, FastAPI, Angular, REST APIs</p></div><div><h3>Cloud &amp; architecture</h3><p>System design, Azure AI, Azure OpenAI, Azure Functions, App Services, Container Apps, Docker, CI/CD</p></div></div></section>
+
+      <section class="credentials section-shell" aria-label="Credentials and recognition"><div class="credential-block reveal"><p class="section-label">Education &amp; certification</p><h2>B.Tech, Information Technology</h2><p>Anna University (MIT Campus), Chennai · 2010 - 2014</p><ul><li>IELTS - General Training, Band 7.5</li><li>Quantinsti - EPAT® Certificate of Excellence for Executive Programme in Algorithmic Trading</li><li>WES - Verified International Academic Qualification</li></ul></div><div class="credential-block reveal delay-1"><p class="section-label">Recognition &amp; publication</p><h2>Making room for better ideas.</h2><ul><li>First place, CaratLane Hackathon - The Game of Nodes (2019)</li><li>ACE of CaratLane for Functional Excellence</li><li>Publication: “CLBC - Cost Effective Load Balanced resource allocation in partitioned cloud system” <a href="https://ieeexplore.ieee.org/document/6996174" target="_blank" rel="noopener noreferrer" aria-label="IEEE publication link">[IEEE link]</a></li></ul></div></section>
+    </main>
+
+    <footer id="contact"><div class="section-shell footer-inner"><div><p class="section-label">Get in touch</p><h2>Let's build something that matters.</h2><a class="email-link" href="mailto:muralimano28@gmail.com">muralimano28@gmail.com <span>↗</span></a><p class="phone">+91-890-456-1358</p></div><div class="footer-links"><a href="https://www.linkedin.com/in/muralimanohar-p/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">LinkedIn <span>↗</span></a><a href="https://github.com/muralimano28" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">GitHub <span>↗</span></a><p>© <span id="year"></span> Murali Manohar P</p></div></div></footer>
+    <script src="script.js"></script>
+  </body>
 </html>
